@@ -18,7 +18,6 @@ This project was developed as a final project for the MSc in Business Analytics 
 - `Data/`: Includes data files uploaded to the repository.
 - `index.html`: HTML file serving as the user interface (UI) for the deployed endpoint.
 - `team7_Airline-Satisfaction-Prediction.ipynb`: Jupyter notebook containing the main code for the project, including data preprocessing, model training, and evaluation.
-- `team7_Airline-Satisfaction-Prediction-Updated.ipynb`: Updated version of the Jupyter notebook with proper markdowns and comments for clarity.
 - `README.md`: This file, providing an overview of the repository contents.
 
 ## Usage
