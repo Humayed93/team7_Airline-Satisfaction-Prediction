@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Satisfaction Prediction Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Makes sure padding doesn't affect the total width */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #predictionResult {
+            background-color: #dcf8c6;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            display: none; /* Hide initially */
+        }
+    </style>
+</head>
+<body>
+    <h2>Flight Satisfaction Prediction</h2>
+    <form id="predictionForm">
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="1">Female</option>
+            <option value="0">Male</option>
+        </select><br>
+
+        <label for="customerType">Customer Type:</label>
+        <select id="customerType">
+            <option value="1">Loyal Customer</option>
+            <option value="0">Disloyal Customer</option>
+        </select><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" min="1" max="100"><br>
+
+        <label for="typeOfTravel">Type of Travel:</label>
+        <select id="typeOfTravel">
+            <option value="0">Personal Travel</option>
+            <option value="1">Business Travel</option>
+        </select><br>
+
+        <label for="class">Class:</label>
+        <select id="class">
+            <option value="2">Business</option>
+            <option value="0">Eco</option>
+            <option value="1">Eco Plus</option>
+        </select><br>
+
+        <label for="flightDistance">Flight Distance:</label>
+        <input type="number" id="flightDistance" min="0"><br>
+
+        <label for="inflightWifi">Inflight Wifi Service (0:Not Applicable;1-5):</label>
+        <input type="number" id="inflightWifi" min="0" max="5" step="1" required><br>
+
+        <label for="timeConvenience">Departure/Arrival Time Convenient (1-5):</label>
+        <input type="number" id="timeConvenience" min="1" max="5" step="1" required><br>
+
+        <label for="onlineBooking">Ease of Online Booking (1-5):</label>
+        <input type="number" id="onlineBooking" min="1" max="5" step="1" required><br>
+
+        <label for="gateLocation">Gate Location (1-5):</label>
+        <input type="number" id="gateLocation" min="1" max="5" step="1" required><br>
+
+        <label for="foodAndDrink">Food and Drink (1-5):</label>
+        <input type="number" id="foodAndDrink" min="1" max="5" step="1" required><br>
+
+        <label for="onlineBoarding">Online Boarding (1-5):</label>
+        <input type="number" id="onlineBoarding" min="1" max="5" step="1" required><br>
+
+        <label for="seatComfort">Seat Comfort (1-5):</label>
+        <input type="number" id="seatComfort" min="1" max="5" step="1" required><br>
+
+        <label for="inflightEntertainment">Inflight Entertainment (1-5):</label>
+        <input type="number" id="inflightEntertainment" min="1" max="5" step="1" required><br>
+
+        <label for="onboardService">On-board Service (1-5):</label>
+        <input type="number" id="onboardService" min="1" max="5" step="1" required><br>
+
+        <label for="legRoomService">Leg Room Service (1-5):</label>
+        <input type="number" id="legRoomService" min="1" max="5" step="1" required><br>
+
+        <label for="baggageHandling">Baggage Handling (1-5):</label>
+        <input type="number" id="baggageHandling" min="1" max="5" step="1" required><br>
+
+        <label for="checkinService">Check-in Service (1-5):</label>
+        <input type="number" id="checkinService" min="1" max="5" step="1" required><br>
+
+        <label for="inflightService">Inflight Service (1-5):</label>
+        <input type="number" id="inflightService" min="1" max="5" step="1" required><br>
+
+        <label for="cleanliness">Cleanliness (1-5):</label>
+        <input type="number" id="cleanliness" min="1" max="5" step="1" required><br>
+
+        <label for="departureDelay">Departure Delay in Minutes:</label>
+        <input type="number" id="departureDelay" min="0"><br>
+
+        <label for="arrivalDelay">Arrival Delay in Minutes:</label>
+        <input type="number" id="arrivalDelay" min="0"><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <div id="predictionResult"></div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent default form submission
+
+            // Collecting features from the form
+            const features = [
+                document.getElementById('gender').value,
+                document.getElementById('customerType').value,
+                document.getElementById('age').value,
+                document.getElementById('typeOfTravel').value,
+                document.getElementById('class').value,
+                document.getElementById('flightDistance').value,
+                document.getElementById('inflightWifi').value,
+                document.getElementById('timeConvenience').value,
+                document.getElementById('onlineBooking').value,
+                document.getElementById('gateLocation').value,
+                document.getElementById('foodAndDrink').value,
+                document.getElementById('onlineBoarding').value,
+                document.getElementById('seatComfort').value,
+                document.getElementById('inflightEntertainment').value,
+                document.getElementById('onboardService').value,
+                document.getElementById('legRoomService').value,
+                document.getElementById('baggageHandling').value,
+                document.getElementById('checkinService').value,
+                document.getElementById('inflightService').value,
+                document.getElementById('cleanliness').value,
+                document.getElementById('departureDelay').value,
+                document.getElementById('arrivalDelay').value
+            ];
+
+            // Convert features for numerical inputs from string to integer
+            const numericalFeatures = features.map(feature => isNaN(feature) ? feature : Number(feature));
+
+            // Sending the features to your API endpoint
+            fetch('https://vmtt36bco8.execute-api.us-east-1.amazonaws.com/prod', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ features: numericalFeatures })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Assuming the 'data' structure is { "statusCode": 200, "body": "prediction_value" }
+                // Parse the 'body' to get the prediction value
+                const predictionValue = parseFloat(data.body);
+                const percentage = predictionValue * 100;
+                const isSatisfied = percentage >= 50;
+                const resultText = `${percentage.toFixed(7)}% ${isSatisfied ? "Satisfied" : "Not Satisfied"}`;
+
+                const resultDiv = document.getElementById('predictionResult');
+                resultDiv.textContent = 'Prediction: ' + resultText;
+                
+                // Change background color based on the result
+                resultDiv.style.backgroundColor = isSatisfied ? '#dcf8c6' : '#ffcccc'; // Light green for Satisfied, light red for Not Satisfied
+                resultDiv.style.color = isSatisfied ? 'black' : 'red'; // Text color adjustment for visibility
+                
+                resultDiv.style.display = 'block'; // Make sure the result div is shown
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Optionally, handle errors/display error messages
+            });
+        });
+    </script>
+</body>
+</html>
