@@ -22,10 +22,16 @@
             max-width: 500px;
             margin: 20px auto;
         }
+        .form-group {
+            margin-bottom: 20px;
+        }
         label {
             font-weight: bold;
             margin-top: 15px;
             display: block;
+        }
+        input[type=range] {
+            width: 100%;
         }
         input, select {
             width: 100%;
@@ -78,7 +84,7 @@
         </select><br>
 
         <label for="age">Age:</label>
-        <input type="number" id="age" min="1" max="100"><br>
+        <input type="number" id="age" min="1" max="100" value="35"><br>
 
         <label for="typeOfTravel">Type of Travel:</label>
         <select id="typeOfTravel">
@@ -94,55 +100,55 @@
         </select><br>
 
         <label for="flightDistance">Flight Distance:</label>
-        <input type="number" id="flightDistance" min="0"><br>
+        <input type="number" id="flightDistance" min="0" value="1000"><br>
 
-        <label for="inflightWifi">Inflight Wifi Service (0:Not Applicable;1-5):</label>
-        <input type="number" id="inflightWifi" min="0" max="5" step="1" required><br>
+        <label for="inflightWifi">Inflight Wifi Service (1-5):</label>
+        <input type="number" id="inflightWifi" min="0" max="5" step="1" value="3" required><br>
 
         <label for="timeConvenience">Departure/Arrival Time Convenient (1-5):</label>
-        <input type="number" id="timeConvenience" min="1" max="5" step="1" required><br>
+        <input type="number" id="timeConvenience" min="1" max="5" step="1" value="3" required><br>
 
         <label for="onlineBooking">Ease of Online Booking (1-5):</label>
-        <input type="number" id="onlineBooking" min="1" max="5" step="1" required><br>
+        <input type="number" id="onlineBooking" min="1" max="5" step="1" value="3" required><br>
 
         <label for="gateLocation">Gate Location (1-5):</label>
-        <input type="number" id="gateLocation" min="1" max="5" step="1" required><br>
+        <input type="number" id="gateLocation" min="1" max="5" step="1" value="3" required><br>
 
         <label for="foodAndDrink">Food and Drink (1-5):</label>
-        <input type="number" id="foodAndDrink" min="1" max="5" step="1" required><br>
+        <input type="number" id="foodAndDrink" min="1" max="5" step="1" value="3" required><br>
 
         <label for="onlineBoarding">Online Boarding (1-5):</label>
-        <input type="number" id="onlineBoarding" min="1" max="5" step="1" required><br>
+        <input type="number" id="onlineBoarding" min="1" max="5" step="1" value="3" required><br>
 
         <label for="seatComfort">Seat Comfort (1-5):</label>
-        <input type="number" id="seatComfort" min="1" max="5" step="1" required><br>
+        <input type="number" id="seatComfort" min="1" max="5" step="1" value="3" required><br>
 
         <label for="inflightEntertainment">Inflight Entertainment (1-5):</label>
-        <input type="number" id="inflightEntertainment" min="1" max="5" step="1" required><br>
+        <input type="number" id="inflightEntertainment" min="1" max="5" step="1" value="3" required><br>
 
         <label for="onboardService">On-board Service (1-5):</label>
-        <input type="number" id="onboardService" min="1" max="5" step="1" required><br>
+        <input type="number" id="onboardService" min="1" max="5" step="1" value="3" required><br>
 
         <label for="legRoomService">Leg Room Service (1-5):</label>
-        <input type="number" id="legRoomService" min="1" max="5" step="1" required><br>
+        <input type="number" id="legRoomService" min="1" max="5" step="1" value="3" required><br>
 
         <label for="baggageHandling">Baggage Handling (1-5):</label>
-        <input type="number" id="baggageHandling" min="1" max="5" step="1" required><br>
+        <input type="number" id="baggageHandling" min="1" max="5" step="1" value="3" required><br>
 
         <label for="checkinService">Check-in Service (1-5):</label>
-        <input type="number" id="checkinService" min="1" max="5" step="1" required><br>
+        <input type="number" id="checkinService" min="1" max="5" step="1" value="3" required><br>
 
         <label for="inflightService">Inflight Service (1-5):</label>
-        <input type="number" id="inflightService" min="1" max="5" step="1" required><br>
+        <input type="number" id="inflightService" min="1" max="5" step="1" value="3" required><br>
 
         <label for="cleanliness">Cleanliness (1-5):</label>
-        <input type="number" id="cleanliness" min="1" max="5" step="1" required><br>
+        <input type="number" id="cleanliness" min="1" max="5" step="1" value="3" required><br>
 
         <label for="departureDelay">Departure Delay in Minutes:</label>
-        <input type="number" id="departureDelay" min="0"><br>
+        <input type="number" id="departureDelay" min="0" value="100"><br>
 
         <label for="arrivalDelay">Arrival Delay in Minutes:</label>
-        <input type="number" id="arrivalDelay" min="0"><br>
+        <input type="number" id="arrivalDelay" min="0" value="60"><br>
 
         <button type="submit">Predict</button>
     </form>
